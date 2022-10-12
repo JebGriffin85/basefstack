@@ -32,6 +32,7 @@ function ProfileButton({ user }) {
         <>
             <button onClick={openMenu}>
                 <i className="fas fa-user-circle" />
+                <div>click here</div>
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">

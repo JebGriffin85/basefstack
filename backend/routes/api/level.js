@@ -7,7 +7,7 @@ const { Level, User } = require('../../db/models');
 const router = express.Router();
 
 router.get('/getLevel/:id', asyncHandler(async (req, res) => {
-    const levelId  = parseInt(req.params.id)
+    const levelId  = parseInt(req.params.id);
     // let levelId = 1;
     if (levelId) {
         const level = await Level.findOne({
@@ -16,10 +16,13 @@ router.get('/getLevel/:id', asyncHandler(async (req, res) => {
     });
     if(level){
         return res.json(level);
-
-    }
-}
-res.send('could not find')
+    };
+};
+res.json({ error: 'could not find level' })
 }));
+
+
+
+
 
 module.exports = router;
