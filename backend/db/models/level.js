@@ -22,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.INTEGER,
       allowNull: false
     },
-    userId: DataTypes.INTEGER
+    userId: {
+      type: DataTypes.INTEGER
+    }
   }, {});
   Level.associate = function(models) {
     Level.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'CASCADE' });

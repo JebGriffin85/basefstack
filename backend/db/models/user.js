@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    // User.hasMany(models.Level, { foreignKey: levelId, onDelete: 'CASCADE' });
+    User.hasMany(models.Level, { foreignKey: 'userId', onDelete: 'CASCADE' });
   };
 
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
