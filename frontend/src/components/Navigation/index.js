@@ -51,6 +51,13 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import Link from '@mui/material/Link';
+import LogoutIcon from '@mui/icons-material/Logout';
+
+
+
+
+
+
 export default function Navigation({ isLoaded }) {
 
     const logout = (e) => {
@@ -108,7 +115,7 @@ export default function Navigation({ isLoaded }) {
                 
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Menu        <Menu
+                                <Menu
                             id="menu-appbar"
                             anchorEl={anchorEl}
                             anchorOrigin={{
@@ -134,18 +141,20 @@ export default function Navigation({ isLoaded }) {
                                 Welcome {user}
                             </Typography>
                                 <FormGroup>
+                                    <LogoutIcon />
                                     <FormControlLabel
                                         control={
-                                            <Switch
-                                                size="small"
-                                                checked={sessionUser}
-                                                onChange={logout}
-                                                aria-label="login switch"
-                                                color="warning"
+                                            <IconButton
+                                            startIcon={LogoutIcon}
+                                            size="small"
+                                            checked={sessionUser}
+                                            onClick={logout}
+                                            aria-label="login switch"
+                                            color="warning"
                                             />
                                         }
                                         label={auth ? 'Logout' : 'Login'}
-                                    />
+                                        />
                                 </FormGroup>
                         </div>
                         
