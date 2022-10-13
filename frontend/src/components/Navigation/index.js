@@ -48,25 +48,32 @@ import Menu from '@mui/material/Menu';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-
-
+import { useDispatch } from 'react-redux';
+import * as sessionActions from '../../store/session';
+import Link from '@mui/material/Link';
 export default function Navigation({ isLoaded }) {
+
+    const logout = (e) => {
+        e.preventDefault();
+        dispatch(sessionActions.logout());
+    };
+
     const theme = createTheme({
         palette: {
             primary: {
-                main: "#fffff" // This is an orange looking color
+                main: "#fffff" 
             },
             secondary: {
-                main: "#ffcc80" //Another orange-ish color
+                main: "#00000" //Another orange-ish color
             }
         }
     });
 
-
+    const dispatch = useDispatch();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const sessionUser = useSelector(state => state.session.user);
+
     let user;
        if (sessionUser) {
         user = sessionUser.username
@@ -120,7 +127,7 @@ export default function Navigation({ isLoaded }) {
                             <MenuItem onClick={handleClose}>My account</MenuItem>
                         </Menu>
                     </Typography>
-                    {auth && (
+                        {isLoaded && sessionUser && (
                         
                             <div> 
                             <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: "inline", whiteSpace: "noWrap" }} noWrap={true}>
@@ -131,8 +138,8 @@ export default function Navigation({ isLoaded }) {
                                         control={
                                             <Switch
                                                 size="small"
-                                                checked={auth}
-                                                onChange={handleChange}
+                                                checked={sessionUser}
+                                                onChange={logout}
                                                 aria-label="login switch"
                                                 color="warning"
                                             />
@@ -143,6 +150,16 @@ export default function Navigation({ isLoaded }) {
                         </div>
                         
                     )}
+                        {isLoaded && !sessionUser &&(
+
+                            <div>
+                                <Link href="/login" underline="hover" variant="h6" color="black">
+                                    {'Sign in'}
+                                </Link>
+                               
+                            </div>
+
+                        )}
                 </Toolbar>
             </AppBar>
                 </ThemeProvider>
