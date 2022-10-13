@@ -69,10 +69,10 @@ export default function Navigation({ isLoaded }) {
     const theme = createTheme({
         palette: {
             primary: {
-                main: "#fffff" 
+                main: "#ffffff" 
             },
             secondary: {
-                main: "#00000" //Another orange-ish color
+                main: "#000000" 
             }
         }
     });
@@ -104,10 +104,10 @@ export default function Navigation({ isLoaded }) {
     };
 
     return (isLoaded &&
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1}}>
            
                 <ThemeProvider theme={theme}>
-            <AppBar position="static">
+                <AppBar position="static" sx={{ boxShadow: 0, borderBottom: 1 }} >
                 <Toolbar>
                     
                         <IconButton onClick={handleNavMenu}
