@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
 
 export default function LoginFormPage() {
     const dispatch = useDispatch();
@@ -50,11 +48,7 @@ export default function LoginFormPage() {
                 />
             </label>
             <button type="submit">Log In</button>
-            <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                <Button>One</Button>
-                <Button>Two</Button>
-                <Button>Three</Button>
-            </ButtonGroup>
+            
         </form>
     );
 }
