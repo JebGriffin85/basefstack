@@ -63,6 +63,7 @@ export default function Navigation({ isLoaded }) {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
+        setAnchorEl(null);
     };
 
     const theme = createTheme({
@@ -77,20 +78,25 @@ export default function Navigation({ isLoaded }) {
     });
 
     const dispatch = useDispatch();
-    const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [navAnchor, setNavAnchor] = React.useState(null);
     const sessionUser = useSelector(state => state.session.user);
 
     let user;
        if (sessionUser) {
         user = sessionUser.username
     }
-    const handleChange = (event) => {
-        setAuth(event.target.checked);
+
+    const handleNavMenu = (event) => {
+        setNavAnchor(event.currentTarget);
     };
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
+    };
+
+    const handleCloseNav = () => {
+        setNavAnchor(null);
     };
 
     const handleClose = () => {
@@ -104,20 +110,20 @@ export default function Navigation({ isLoaded }) {
             <AppBar position="static">
                 <Toolbar>
                     
-                    <IconButton onClick={handleMenu}
+                        <IconButton onClick={handleNavMenu}
                         size="large"
                         edge="start"
                         color="inherit"
                         aria-label="menu"
                         sx={{ mr: 2 }}
-                    >
+                        >
                         <MenuIcon />
                 
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                                <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorEl}
+                        <Menu
+                            id="Nav"
+                                anchorEl={navAnchor}
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
@@ -127,36 +133,48 @@ export default function Navigation({ isLoaded }) {
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            open={Boolean(anchorEl)}
-                            onClose={handleClose}
+                                open={Boolean(navAnchor)}
+                                onClose={handleCloseNav}
                         >
-                            <MenuItem onClick={handleClose}>ghg</MenuItem>
-                            <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleCloseNav}>ghg</MenuItem>
+                                <MenuItem onClick={handleCloseNav}>My asdf</MenuItem>
+                                <MenuItem onClick={handleCloseNav}>ghg</MenuItem>
+                                <MenuItem onClick={handleCloseNav}>My asdf</MenuItem>
                         </Menu>
                     </Typography>
                         {isLoaded && sessionUser && (
                         
-                            <div> 
-                            <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: "inline", whiteSpace: "noWrap" }} noWrap={true}>
-                                Welcome {user}
-                            </Typography>
-                                <FormGroup>
-                                    <LogoutIcon />
-                                    <FormControlLabel
-                                        control={
-                                            <IconButton
-                                            startIcon={LogoutIcon}
-                                            size="small"
-                                            checked={sessionUser}
-                                            onClick={logout}
-                                            aria-label="login switch"
-                                            color="warning"
-                                            />
-                                        }
-                                        label={auth ? 'Logout' : 'Login'}
-                                        />
-                                </FormGroup>
-                        </div>
+                            <div>
+                                <IconButton
+                                    size="large"
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={handleMenu}
+                                    color="inherit"
+                                >
+                                    <AccountCircle />
+                                    <Typography variant="h6" component="div" sx={{ flexGrow: 1, paddingLeft: 2, paddingTop: .5 }}>{user}</Typography>
+                                </IconButton>
+                                <Menu
+                                    id="profile"
+                                    anchorEl={anchorEl}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorEl)}
+                                    onClose={handleClose}
+                                >
+                                    <MenuItem onClick={logout}>Logout</MenuItem>
+                                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                                </Menu>
+                            </div>
                         
                     )}
                         {isLoaded && !sessionUser &&(
