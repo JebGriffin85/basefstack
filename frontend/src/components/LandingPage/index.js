@@ -71,7 +71,7 @@ function MainHero() {
                     color="text.primary"
                     gutterBottom
                 >
-                    Piano Themes Game
+                    Key Themes
                 </Typography>
                 <Typography variant="h5" align="center" color="text.secondary" component="p">
                     A game where you use your trivia skills to play the theme song of a movie.  Create your own level and join the community.

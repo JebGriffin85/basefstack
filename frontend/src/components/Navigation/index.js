@@ -99,7 +99,7 @@ export default function Navigation({ isLoaded }) {
     };
 
     return (isLoaded &&
-        <Box sx={{ flexGrow: 1}}>
+        <Box >
            
                 <ThemeProvider theme={theme}>
                 <AppBar position="static" sx={{ boxShadow: 0, borderBottom: 1 }} >
@@ -109,11 +109,11 @@ export default function Navigation({ isLoaded }) {
                             </NavLink>
                         <Toolbar>
                             <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
-                            <Typography variant="h6" component="div" sx={{ flexGrow: 1, paddingRight: 2 }}>
+                            <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
                                 test
                             </Typography>
                             </NavLink>
-                            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            <Typography variant="h6" component="div">
                                 test
                             </Typography>
                             </Toolbar>
@@ -132,7 +132,7 @@ export default function Navigation({ isLoaded }) {
                                     color="inherit"
                                 >
                                     <AccountCircle />
-                                    <Typography variant="h6" component="div" sx={{ flexGrow: 1, paddingLeft: 2, paddingTop: .5 }}>{user}</Typography>
+                                    <Typography variant="h6" component="div" sx={{  paddingLeft: 2, paddingTop: .5 }}>{user}</Typography>
                                 </IconButton>
                                 <Menu
                                     id="profile"
