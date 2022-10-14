@@ -25,8 +25,8 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 
 export default function RandomLevelPage(props) {
     return (
-        // <DimensionsProvider>
-        //     {({ containerWidth, containerHeight }) => (
+        <div>
+            
                 <SoundfontProvider
                     instrumentName="acoustic_grand_piano"
                     audioContext={audioContext}
@@ -34,7 +34,8 @@ export default function RandomLevelPage(props) {
                     render={({ isLoading, playNote, stopNote }) => (
                         <Piano
                             noteRange={noteRange}
-                            width={'100vh'}
+                            width={500}
+                            height={'2222px'}
                             playNote={playNote}
                             stopNote={stopNote}
                             disabled={isLoading}
@@ -42,6 +43,7 @@ export default function RandomLevelPage(props) {
                         />
                     )}
                 />
+                </div>
         //     )}
         // </DimensionsProvider>
     );
