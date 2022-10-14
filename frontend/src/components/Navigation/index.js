@@ -110,7 +110,7 @@ export default function Navigation({ isLoaded }) {
                         <Toolbar>
                             <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
-                                test
+                                Fun Mode
                             </Typography>
                             </NavLink>
                             <Typography variant="h6" component="div">
