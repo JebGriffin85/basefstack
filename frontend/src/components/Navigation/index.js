@@ -108,7 +108,7 @@ export default function Navigation({ isLoaded }) {
                                 <PianoIcon sx={{ paddingTop: .5 }} style={{ cursor: 'pointer' }} onClick={navHome} />
                             </NavLink>
                         <Toolbar>
-                            <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
+                            <NavLink to='/funMode' style={{textDecoration: 'none', color: 'black'}}>
                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
                                 Fun Mode
                             </Typography>
