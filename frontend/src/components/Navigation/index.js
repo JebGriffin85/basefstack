@@ -52,7 +52,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import Link from '@mui/material/Link';
 import LogoutIcon from '@mui/icons-material/Logout';
-
+import PianoIcon from '@mui/icons-material/Piano';
 
 
 
@@ -79,7 +79,6 @@ export default function Navigation({ isLoaded }) {
 
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [navAnchor, setNavAnchor] = React.useState(null);
     const sessionUser = useSelector(state => state.session.user);
 
     let user;
@@ -87,16 +86,12 @@ export default function Navigation({ isLoaded }) {
         user = sessionUser.username
     }
 
-    const handleNavMenu = (event) => {
-        setNavAnchor(event.currentTarget);
-    };
+    const navHome = () => {
+       
+    }
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
-    };
-
-    const handleCloseNav = () => {
-        setNavAnchor(null);
     };
 
     const handleClose = () => {
@@ -109,39 +104,22 @@ export default function Navigation({ isLoaded }) {
                 <ThemeProvider theme={theme}>
                 <AppBar position="static" sx={{ boxShadow: 0, borderBottom: 1 }} >
                 <Toolbar>
-                    
-                        <IconButton onClick={handleNavMenu}
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                        >
-                        <MenuIcon />
-                
-                    </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        <Menu
-                            id="Nav"
-                                anchorEl={navAnchor}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                                open={Boolean(navAnchor)}
-                                onClose={handleCloseNav}
-                        >
-                                <MenuItem onClick={handleCloseNav}>ghg</MenuItem>
-                                <MenuItem onClick={handleCloseNav}>My asdf</MenuItem>
-                                <MenuItem onClick={handleCloseNav}>ghg</MenuItem>
-                                <MenuItem onClick={handleCloseNav}>My asdf</MenuItem>
-                        </Menu>
-                    </Typography>
+                            <NavLink to='/' >
+                                <PianoIcon sx={{ paddingTop: .5 }} style={{ cursor: 'pointer' }} onClick={navHome} />
+                            </NavLink>
+                        <Toolbar>
+                            <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
+                            <Typography variant="h6" component="div" sx={{ flexGrow: 1, paddingRight: 2 }}>
+                                test
+                            </Typography>
+                            </NavLink>
+                            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                                test
+                            </Typography>
+                            </Toolbar>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        </Typography>
+                       
                         {isLoaded && sessionUser && (
                         
                             <div>
