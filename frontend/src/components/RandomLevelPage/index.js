@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
-
+import s from './keys/key1.mp3'
 
 import SoundfontProvider from './SoundfontProvider';
 // import './styles.css';
@@ -21,11 +21,30 @@ const keyboardShortcuts = KeyboardShortcuts.create({
     keyboardConfig: KeyboardShortcuts.HOME_ROW,
 });
 
+function testPlay1() {
+    let t1 = new Audio(s)
+    t1.play()
+    setTimeout(() => {
+        t1.play()
+    }, 1000)
 
+
+}
+
+function testPlay () {
+    let t1 = new Audio(s)
+    t1.play()
+    setTimeout(() => {
+        testPlay1()
+    },3000)
+ 
+    
+}
 
 export default function RandomLevelPage(props) {
     return (
         <div>
+            <button onClick={testPlay}>test</button>
             
                 <SoundfontProvider
                     instrumentName="acoustic_grand_piano"

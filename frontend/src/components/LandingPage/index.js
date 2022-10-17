@@ -18,42 +18,25 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import piano from './piano.png'
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+// function Copyright(props) {
+//     return (
+//         <Typography variant="body2" color="text.secondary" align="center" {...props}>
+//             {'Copyright © '}
+//             <Link color="inherit" href="https://mui.com/">
+//                 Your Website
+//             </Link>{' '}
+//             {new Date().getFullYear()}
+//             {'.'}
+//         </Typography>
+//     );
+// }
 
 const footers = [
     {
-        title: 'Company',
-        description: ['Team', 'History', 'Contact us', 'Locations'],
+        title: 'About',
+        description: ['Developer'],
     },
-    {
-        title: 'Features',
-        description: [
-            'Cool stuff',
-            'Random feature',
-            'Team feature',
-            'Developer stuff',
-            'Another one',
-        ],
-    },
-    {
-        title: 'Resources',
-        description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
-    },
-    {
-        title: 'Legal',
-        description: ['Privacy policy', 'Terms of use'],
-    },
+
 ];
 
 function MainHero() {
@@ -119,7 +102,7 @@ function MainHero() {
                         </Grid>
                     ))}
                 </Grid>
-                <Copyright sx={{ mt: 5 }} />
+                {/* <Copyright sx={{ mt: 5 }} /> */}
             </Container>
             {/* End footer */}
         </React.Fragment>
