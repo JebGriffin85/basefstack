@@ -16,7 +16,7 @@ let wait = setTimeout (() => {
   
 async function runSong() {
     testPlay()
-
+console.log('yes')
 }
 
 export default function RandomLevelPage(props) {
