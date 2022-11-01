@@ -1,10 +1,13 @@
-community levels - people can make their own
-score board
-each level completed- unlock a hint, hint saved on user. use one they -1 hint
-need current level 
-reset functionality to delete score, hints, and start over - no bc they could use all hints then restart?
-fun mode - randoms levels for unauth users or users who arent playing main game, hints disabled
 
-speed and tempo do not matter, as long as order is correct
 
 git push heroku HEAD:master
+
+idkwhat2code.com
+app that allows users to create ideas of apps/websites they would like to see made.  A dev can pick up that project and link a repo to it so people can track progress.  (can use github api to see last update on it) - will display how many devs have picked up project, can display github links based on most recently updated repo. 
+dev flag on users to indicate if they can pick up a project.  (limit amount of projects one can pickup?) 
+completed flag? 
+github auth for devs?
+picked up projects must have a repo link. - edit feature
+toggle between completed/non completed projects
+quick links to completed projects
+optional live link for projects

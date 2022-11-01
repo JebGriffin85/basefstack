@@ -16,21 +16,9 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
-import piano from './piano.png'
-
-// function Copyright(props) {
-//     return (
-//         <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//             {'Copyright © '}
-//             <Link color="inherit" href="https://mui.com/">
-//                 Your Website
-//             </Link>{' '}
-//             {new Date().getFullYear()}
-//             {'.'}
-//         </Typography>
-//     );
-// }
-
+import pic from './pic.png'
+import './landingPage.css'
+document.body.style.background = 'red';
 const footers = [
     {
         title: 'About',
@@ -40,6 +28,11 @@ const footers = [
 ];
 
 function MainHero() {
+
+    React.useEffect(() => {
+        document.body.style.background = 'red';
+    
+    })
     return (
         <React.Fragment>
             <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
@@ -51,24 +44,24 @@ function MainHero() {
                     component="h1"
                     variant="h2"
                     align="center"
-                    color="text.primary"
+                    color="white"
                     gutterBottom
                 >
-                    Key Themes
+                    idkwhat2code.com
                 </Typography>
-                <Typography variant="h5" align="center" color="text.secondary" component="p">
-                    A game where you use your trivia skills to play the theme song of a movie.  Create your own level and join the community.
+                <Typography variant="h6" align="center" color="gray" component="p">
+                    A place to share ideas and build projects
                 </Typography>
                 <Container maxWidth="100vh" component="main">
                     <Box
                         component="img"
                         sx={{
                             height: '100%',
-                            width: '100%',
+                            width: '100%'
 
                         }}
                         alt="Red Piano"
-                        src={piano}
+                        src={pic}
                     />
                 </Container>
             </Container>

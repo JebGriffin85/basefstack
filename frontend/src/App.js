@@ -26,7 +26,7 @@ function App() {
           <Route path="/funMode" >
             <RandomLevelPage/>
           </Route>
-          <Route path="/login">
+          <Route path="/login" exact={true}>
             <LoginFormPage />
           </Route>
           <Route path="/signup">
