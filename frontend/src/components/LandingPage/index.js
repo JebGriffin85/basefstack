@@ -18,7 +18,8 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import pic from './pic.png'
 import './landingPage.css'
-document.body.style.background = 'red';
+import { render } from 'react-dom';
+
 const footers = [
     {
         title: 'About',
@@ -27,17 +28,47 @@ const footers = [
 
 ];
 
+const IMAGES = [pic]
+
 function MainHero() {
+    const [loaded, setLoaded] = React.useState(true);
+    const [imgsLoaded, setImgsLoaded] = React.useState(false)
 
     React.useEffect(() => {
-        document.body.style.background = 'red';
-    
+      const loadImage = image => {
+        return new Promise((resolve, reject) => {
+          const loadImg = new Image()
+          loadImg.src = image
+          // wait 2 seconds to simulate loading time
+          loadImg.onload = () =>
+              resolve(image.url)
+
+  
+          loadImg.onerror = err => reject(err)
+        })
+      }
+  
+      Promise.all(IMAGES.map(image => loadImage(image)))
+        .then(() => setImgsLoaded(true))
+        .catch(err => console.log("Failed to load images", err))
+    }, [])
+  
+
+    React.useEffect(() => {
+        document.body.style.background = 'rgba(239, 239, 239, 0.8)';
+  
     })
-    return (
+
+ 
+
+
+    return (loaded && imgsLoaded &&
         <React.Fragment>
             <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
             <CssBaseline />
-            
+            <main className="images">
+    
+      </main>
             {/* Hero unit */}
             <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
                 <Typography
@@ -53,7 +84,8 @@ function MainHero() {
                     A place to share ideas and build projects
                 </Typography>
                 <Container maxWidth="100vh" component="main">
-                    <Box
+                    <Box id='picture'
+                  
                         component="img"
                         sx={{
                             height: '100%',
@@ -61,7 +93,8 @@ function MainHero() {
 
                         }}
                         alt="Red Piano"
-                        src={pic}
+                        src={IMAGES[0]}
+                    
                     />
                 </Container>
             </Container>

@@ -1,37 +1,4 @@
-// import React from 'react';
-// import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import ProfileButton from './ProfileButton';
 
-
-// function Navigation({ isLoaded }) {
-//     const sessionUser = useSelector(state => state.session.user);
-
-//     let sessionLinks;
-//     if (sessionUser) {
-//         sessionLinks = (
-//             <ProfileButton user={sessionUser} />
-//         );
-//     } else {
-//         sessionLinks = (
-//             <>
-//                 <NavLink to="/login">Log In</NavLink>
-//                 <NavLink to="/signup">Sign Up</NavLink>
-//             </>
-//         );
-//     }
-
-//     return (
-//         <ul>
-//             <li>
-//                 <NavLink exact to="/">Home</NavLink>
-//                 {isLoaded && sessionLinks}
-//             </li>
-//         </ul>
-//     );
-// }
-
-// export default Navigation;
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -102,7 +69,7 @@ export default function Navigation({ isLoaded }) {
         <Box >
            
                 <ThemeProvider theme={theme}>
-                <AppBar position="static" sx={{ boxShadow: 0, borderBottom: 1 }} >
+                <AppBar position="fixed" sx={{ boxShadow: 0, borderBottom: 1 }} >
                 <Toolbar>
                             <NavLink to='/' >
                                 <PianoIcon sx={{ paddingTop: .5 }} style={{ cursor: 'pointer' }} onClick={navHome} />
