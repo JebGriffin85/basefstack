@@ -66,16 +66,15 @@ function MainHero() {
         <React.Fragment>
             <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
             <CssBaseline />
-            <main className="images">
     
-      </main>
+
             {/* Hero unit */}
-            <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+            <Container id='mainHero' disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
                 <Typography
                     component="h1"
                     variant="h2"
                     align="center"
-                    color="white"
+                    color="black"
                     gutterBottom
                 >
                     idkwhat2code.com
@@ -135,6 +134,6 @@ function MainHero() {
     );
 }
 
-export default function Pricing() {
+export default function LandingPage() {
     return <MainHero />;
 }

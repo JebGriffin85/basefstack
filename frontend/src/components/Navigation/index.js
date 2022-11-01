@@ -12,7 +12,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
@@ -25,8 +25,14 @@ import PianoIcon from '@mui/icons-material/Piano';
 
 
 
-export default function Navigation({ isLoaded }) {
+export default function Navigation({ isLoaded, history}) {
 
+    const [currentPath, setCurrentPath] = React.useState(null)
+    React.useEffect(() => {
+        setCurrentPath(history.location.pathname)
+        console.log(currentPath)
+        document.body.style.background = 'rgba(239, 239, 239, 0.8)';
+    })
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
@@ -36,7 +42,7 @@ export default function Navigation({ isLoaded }) {
     const theme = createTheme({
         palette: {
             primary: {
-                main: "#ffffff" 
+                main: 'rgba(239, 239, 239, 0.8)'
             },
             secondary: {
                 main: "#000000" 
@@ -67,13 +73,17 @@ export default function Navigation({ isLoaded }) {
 
     return (isLoaded &&
         <Box >
-           
+           {/* {console.log(history.location)} */}
                 <ThemeProvider theme={theme}>
-                <AppBar position="fixed" sx={{ boxShadow: 0, borderBottom: 1 }} >
+                <AppBar position="fixed" sx={{textAlign:'center', display: 'flex', boxShadow: 0, justifyContent: '' }} >
                 <Toolbar>
-                            <NavLink to='/' >
-                                <PianoIcon sx={{ paddingTop: .5 }} style={{ cursor: 'pointer' }} onClick={navHome} />
+                    {currentPath !== '/' &&
+                            <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
+                            <Typography variant="h6" component="div">
+                                home
+                            </Typography>
                             </NavLink>
+                    }
                         <Toolbar>
                             <NavLink to='/funMode' style={{textDecoration: 'none', color: 'black'}}>
                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>

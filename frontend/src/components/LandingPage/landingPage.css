@@ -1,8 +1,10 @@
 
-body {
+#mainHero{
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    padding-top: 8em;
+    height: 100vh;
 }
   img{
     border-radius: 10px;
