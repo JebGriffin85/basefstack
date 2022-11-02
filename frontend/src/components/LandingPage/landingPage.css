@@ -1,6 +1,6 @@
 
 #mainHero{
-
+    w3-animate-bottom: 300px;
     padding-top: 4em;
     /* height: 100vh; */
 }
@@ -18,7 +18,7 @@
 }
 
 #mainPicture {
-    animation: fadeInAnimation ease 4s;
+    animation: fadeInAnimation ease 6s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }

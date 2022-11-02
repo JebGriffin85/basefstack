@@ -80,14 +80,21 @@ export default function Navigation({ isLoaded, history}) {
                             </NavLink>
                     
                         <Toolbar>
-                            <NavLink to='/funMode' style={{textDecoration: 'none', color: 'black'}}>
+                            <NavLink to='#about' style={{textDecoration: 'none', color: 'black'}}>
                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
                                 About
                             </Typography>
                             </NavLink>
+                            <NavLink to='/browse' style={{textDecoration: 'none', color: 'black'}}>
                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
                                 Browse
                             </Typography>
+                            </NavLink>
+                            <NavLink to='create' style={{textDecoration: 'none', color: 'black'}}>
+                            <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
+                                Create
+                            </Typography>
+                            </NavLink>
                             </Toolbar>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         </Typography>

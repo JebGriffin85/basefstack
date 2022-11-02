@@ -6,13 +6,13 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
-import RandomLevelPage from "./components/RandomLevelPage";
+
 
 function App() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -24,9 +24,6 @@ function App() {
         <Switch>
           <Route path="/" exact={true}>
             <LandingPage />
-          </Route>
-          <Route path="/funMode" >
-            <RandomLevelPage/>
           </Route>
           <Route path="/login" exact={true}>
             <LoginFormPage />
