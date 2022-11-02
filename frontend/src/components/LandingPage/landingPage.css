@@ -3,7 +3,7 @@
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    padding-top: 8em;
+    padding-top: 4em;
     height: 100vh;
 }
   img{
