@@ -39,11 +39,8 @@ function MainHero() {
         return new Promise((resolve, reject) => {
           const loadImg = new Image()
           loadImg.src = image
-          // wait 2 seconds to simulate loading time
           loadImg.onload = () =>
               resolve(image.url)
-
-  
           loadImg.onerror = err => reject(err)
         })
       }
@@ -77,10 +74,11 @@ function MainHero() {
                     color="black"
                     gutterBottom
                     fontFamily="monospace"
+                    fontSize="3em"
                 >
                     idkwhat2code
                 </Typography>
-                <Typography variant="h6" align="center" color="gray" component="p">
+                <Typography variant="h6" align="center" color="gray" component="p" style={{paddingTop: '2em', paddingBottom: '3em'}}>
                     A place to share ideas and build projects
                 </Typography>
                 <Container maxWidth="100vh" component="main">
@@ -92,7 +90,7 @@ function MainHero() {
                             width: '100%'
 
                         }}
-                        alt="Red Piano"
+                        alt="Messy Desk"
                         src={IMAGES[0]}
                     
                     />
