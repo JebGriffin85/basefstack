@@ -19,7 +19,6 @@ import Container from '@mui/material/Container';
 import pic from './pic.png'
 import './landingPage.css'
 import { render } from 'react-dom';
-
 const footers = [
     {
         title: 'About',
@@ -81,6 +80,9 @@ function MainHero() {
                 <Typography variant="h6" align="center" color="gray" component="p" style={{paddingTop: '2em', paddingBottom: '3em'}}>
                     A place to share ideas and build projects
                 </Typography>
+                <div style={{display: 'flex', alignContent:'flex-end', flexWrap: 'wrap', justifyContent: 'flex-end'}}>
+
+               
                 <Container maxWidth="100vh" component="main">
                     <Box id='picture'
                   
@@ -95,6 +97,11 @@ function MainHero() {
                     
                     />
                 </Container>
+         
+
+                <Button variant="contained" sx={{color: 'white', backgroundColor: 'black'}} style={{justifyContent: 'flex-end'}}>Browse Projects
+                </Button>
+                </div>
             </Container>
             {/* End hero unit */}
 

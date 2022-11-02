@@ -86,7 +86,7 @@ export default function Navigation({ isLoaded, history}) {
                             </Typography>
                             </NavLink>
                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
-                                Link 2
+                                Browse
                             </Typography>
                             </Toolbar>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

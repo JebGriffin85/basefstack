@@ -4,7 +4,7 @@
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     padding-top: 4em;
-    height: 100vh;
+    /* height: 100vh; */
 }
   img{
     border-radius: 10px;
