@@ -72,7 +72,7 @@ function Copyright(props) {
 
     
 React.useEffect(() => {
-    document.body.style.background = 'green';
+
 
 })
     return (

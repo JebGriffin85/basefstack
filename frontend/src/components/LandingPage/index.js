@@ -76,8 +76,9 @@ function MainHero() {
                     align="center"
                     color="black"
                     gutterBottom
+                    fontFamily="monospace"
                 >
-                    idkwhat2code.com
+                    idkwhat2code
                 </Typography>
                 <Typography variant="h6" align="center" color="gray" component="p">
                     A place to share ideas and build projects
