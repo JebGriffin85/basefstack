@@ -1,24 +1,19 @@
 
 
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import StarIcon from '@mui/icons-material/StarBorder';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import pic from './pic.png'
 import './landingPage.css'
-import { render } from 'react-dom';
+
+
+
 const footers = [
     {
         title: 'About',
@@ -27,7 +22,7 @@ const footers = [
 
 ];
 
-const IMAGES = [pic]
+const IMAGES = [pic];
 
 function MainHero() {
     const [loaded, setLoaded] = React.useState(true);
@@ -65,8 +60,8 @@ function MainHero() {
     
 
             {/* Hero unit */}
-            <Container id='mainHero' disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
-                <Typography
+            <Container id='mainHero'  disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+                <Typography id='title'
                     component="h1"
                     variant="h2"
                     align="center"
@@ -77,10 +72,10 @@ function MainHero() {
                 >
                     idkwhat2code
                 </Typography>
-                <Typography variant="h6" align="center" color="gray" component="p" style={{paddingTop: '2em', paddingBottom: '3em'}}>
+                <Typography id='description' variant="h6" align="center" color="gray" component="p" style={{paddingTop: '2em', paddingBottom: '3em'}}>
                     A place to share ideas and build projects
                 </Typography>
-                <div style={{display: 'flex', alignContent:'flex-end', flexWrap: 'wrap', justifyContent: 'flex-end'}}>
+                <div id='mainPicture' style={{display: 'flex', alignContent:'flex-end', flexWrap: 'wrap', justifyContent: 'flex-end'}}>
 
                
                 <Container maxWidth="100vh" component="main">
@@ -106,7 +101,7 @@ function MainHero() {
             {/* End hero unit */}
 
             {/* Footer */}
-            <Container
+            <Container id='footer'
                 maxWidth="md"
                 component="footer"
                 sx={{
