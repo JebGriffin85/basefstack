@@ -21,132 +21,316 @@ import Link from '@mui/material/Link';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SubtitlesIcon from '@mui/icons-material/Subtitles';
 
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 
+import AdbIcon from '@mui/icons-material/Adb';
 
+const pages = ['Products', 'Pricing', 'Blog'];
 
 
 export default function Navigation({ isLoaded, history}) {
-
-    React.useEffect(() => {
-        document.body.style.background = 'rgba(239, 239, 239, 0.8)';
-    })
-    const logout = (e) => {
-        e.preventDefault();
-        dispatch(sessionActions.logout());
-        setAnchorEl(null);
-    };
-
     const theme = createTheme({
-        palette: {
-            primary: {
-                main: 'rgba(239, 239, 239, 0.8)'
-            },
-            secondary: {
-                main:'rgba(239, 239, 239, 0.8)' 
-            }
-        }
-    });
-
-    const dispatch = useDispatch();
+                palette: {
+                    primary: {
+                        main: 'rgba(239, 239, 239, 0.8)'
+                    },
+                    secondary: {
+                        main:'rgba(239, 239, 239, 0.8)' 
+                    }
+                },
+                
+            });
+        
+        const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const sessionUser = useSelector(state => state.session.user);
-
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
     let user;
-       if (sessionUser) {
-        user = sessionUser.username
-    }
-
-    const navHome = () => {
-       
-    }
-
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
+           if (sessionUser) {
+            user = sessionUser.username
+        }
+    const handleOpenNavMenu = (event) => {
+      setAnchorElNav(event.currentTarget);
     };
-
-    const handleClose = () => {
-        setAnchorEl(null);
+    const handleOpenUserMenu = (event) => {
+      setAnchorElUser(event.currentTarget);
     };
-
-    return (isLoaded &&
-        <Box >
-           {/* {console.log(history.location)} */}
-                <ThemeProvider theme={theme}>
-                <AppBar position="fixed" sx={{textAlign:'center', display: 'flex', boxShadow: 'none',backgroundColor:'rgba(239, 239, 239, 0.8)' }} >
-                <Toolbar>
+  
+    const handleCloseNavMenu = () => {
+      setAnchorElNav(null);
+    };
+  
+    const handleCloseUserMenu = () => {
+      setAnchorElUser(null);
+    };
+    React.useEffect(() => {
+                document.body.style.background = 'rgba(239, 239, 239, 0.8)';
+            })
+            const logout = (e) => {
+                e.preventDefault();
+                dispatch(sessionActions.logout());
+                setAnchorEl(null);
+            };
+  
+    return (
+        <Box>
+            <ThemeProvider theme={theme}>
+      <AppBar position="fixed" sx={{boxShadow: 'none'}}>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+          <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
+            <SubtitlesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            </NavLink>
+            <NavLink to='/'>
+ 
+              </NavLink>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                ))}
+                <NavLink to='#about' style={{textDecoration: 'none', color: 'black'}}>
                     
-                            <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
-                            <SubtitlesIcon style={{marginTop: '6px'}}/>
-                            </NavLink>
-                    
-                        <Toolbar>
-                            <NavLink to='#about' style={{textDecoration: 'none', color: 'black'}}>
-                            <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
-                                About
-                            </Typography>
-                            </NavLink>
-                            <NavLink to='/browse' style={{textDecoration: 'none', color: 'black'}}>
-                            <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
-                                Browse
-                            </Typography>
-                            </NavLink>
-                            <NavLink to='create' style={{textDecoration: 'none', color: 'black'}}>
-                            <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
-                                Create
-                            </Typography>
-                            </NavLink>
-                            </Toolbar>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        </Typography>
-                       
-                        {isLoaded && sessionUser && (
-                        
-                            <div>
-                                <IconButton
-                                    size="large"
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
-                                    onClick={handleMenu}
-                                    color="inherit"
-                                >
-                                    <AccountCircle />
-                                    <Typography variant="h6" component="div" sx={{  paddingLeft: 2, paddingTop: .5 }}>{user}</Typography>
-                                </IconButton>
-                                <Menu
-                                    id="profile"
-                                    anchorEl={anchorEl}
-                                    anchorOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    keepMounted
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    open={Boolean(anchorEl)}
-                                    onClose={handleClose}
-                                >
-                                    <MenuItem onClick={logout}>Logout</MenuItem>
-                                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                                </Menu>
-                            </div>
-                        
-                    )}
-                        {isLoaded && !sessionUser &&(
+                <MenuItem  onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">About</Typography>
+                </MenuItem>
+                </NavLink>
+              </Menu>
+            </Box>
+          <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
+            <SubtitlesIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}/>
+            </NavLink>
+            
+            <Typography
+              variant="h5"
+              noWrap
+              component="div"
+
+              sx={{
+                mr: 2,
+                display: { xs: 'flex', md: 'none' },
+                flexGrow: 1,
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+              >
+              
+            </Typography>
+
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
+              ))}
+            </Box>
+            {isLoaded && sessionUser && (
+            <Box sx={{ flexGrow: 0, display: 'flex' }}>
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}
+                
+                >
+  <AccountCircle sx={{marginRight: '.3em'}}/>
+                <Typography textAlign="center" >{sessionUser.username}</Typography>
+                </IconButton>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+
+     <MenuItem onClick={logout}>Logout</MenuItem>
+
+              </Menu>
+            
+            </Box>
+            )}
+                {isLoaded && !sessionUser &&(
 
                             <div>
-                                <Link href="/login" underline="hover" variant="h6" color="black">
+                                <NavLink to="/login" underline="hover" variant="h6" color="black">
                                     {'Sign in'}
-                                </Link>
+                                </NavLink>
                                
                             </div>
 
                         )}
-                </Toolbar>
-            </AppBar>
-                </ThemeProvider>
-        </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+      </ThemeProvider>
+      </Box>
     );
-}
+  }
+
+// export default function Navigation({ isLoaded, history}) {
+
+//     React.useEffect(() => {
+//         document.body.style.background = 'rgba(239, 239, 239, 0.8)';
+//     })
+//     const logout = (e) => {
+//         e.preventDefault();
+//         dispatch(sessionActions.logout());
+//         setAnchorEl(null);
+//     };
+
+//     const theme = createTheme({
+//         palette: {
+//             primary: {
+//                 main: 'rgba(239, 239, 239, 0.8)'
+//             },
+//             secondary: {
+//                 main:'rgba(239, 239, 239, 0.8)' 
+//             }
+//         }
+//     });
+
+//     const dispatch = useDispatch();
+//     const [anchorEl, setAnchorEl] = React.useState(null);
+//     const sessionUser = useSelector(state => state.session.user);
+
+//     let user;
+//        if (sessionUser) {
+//         user = sessionUser.username
+//     }
+
+//     const handleMenu = (event) => {
+//         setAnchorEl(event.currentTarget);
+//     };
+
+//     const handleClose = () => {
+//         setAnchorEl(null);
+//     };
+
+//     return (isLoaded &&
+//         <Box >
+//            {/* {console.log(history.location)} */}
+//                 <ThemeProvider theme={theme}>
+//                 <AppBar position="fixed" sx={{textAlign:'center', display: 'flex', boxShadow: 'none',backgroundColor:'rgba(239, 239, 239, 0.8)' }} >
+//                 <Toolbar>
+                    
+//                             <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
+//                             <SubtitlesIcon style={{marginTop: '6px'}}/>
+//                             </NavLink>
+                    
+//                         <Toolbar>
+//                             <NavLink to='#about' style={{textDecoration: 'none', color: 'black'}}>
+//                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
+//                                 About
+//                             </Typography>
+//                             </NavLink>
+//                             <NavLink to='/browse' style={{textDecoration: 'none', color: 'black'}}>
+//                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
+//                                 Browse
+//                             </Typography>
+//                             </NavLink>
+//                             <NavLink to='create' style={{textDecoration: 'none', color: 'black'}}>
+//                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
+//                                 Create Project
+//                             </Typography>
+//                             </NavLink>
+//                             </Toolbar>
+//                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+//                         </Typography>
+                       
+//                         {isLoaded && sessionUser && (
+                        
+//                             <div>
+//                                 <IconButton
+//                                     size="large"
+//                                     aria-label="account of current user"
+//                                     aria-controls="menu-appbar"
+//                                     aria-haspopup="true"
+//                                     onClick={handleMenu}
+//                                     color="inherit"
+//                                 >
+//                                     <AccountCircle />
+//                                     <Typography variant="h6" component="div" sx={{  paddingLeft: 2, paddingTop: .5 }}>{user}</Typography>
+//                                 </IconButton>
+//                                 <Menu
+//                                     id="profile"
+//                                     anchorEl={anchorEl}
+//                                     anchorOrigin={{
+//                                         vertical: 'top',
+//                                         horizontal: 'right',
+//                                     }}
+//                                     keepMounted
+//                                     transformOrigin={{
+//                                         vertical: 'top',
+//                                         horizontal: 'right',
+//                                     }}
+//                                     open={Boolean(anchorEl)}
+//                                     onClose={handleClose}
+//                                 >
+//                                     <MenuItem onClick={logout}>Logout</MenuItem>
+//                                     <MenuItem onClick={handleClose}>My account</MenuItem>
+//                                 </Menu>
+//                             </div>
+                        
+//                     )}
+//                         {isLoaded && !sessionUser &&(
+
+//                             <div>
+//                                 <Link href="/login" underline="hover" variant="h6" color="black">
+//                                     {'Sign in'}
+//                                 </Link>
+                               
+//                             </div>
+
+//                         )}
+//                 </Toolbar>
+//             </AppBar>
+//                 </ThemeProvider>
+//         </Box>
+//     );
+// }
