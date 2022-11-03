@@ -1,5 +1,3 @@
-
-
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -11,7 +9,6 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import pic from './pic.png'
 import './landingPage.css'
-
 
 
 const footers = [
@@ -39,6 +36,7 @@ function MainHero() {
         })
       }
   
+      //checking to see if all images have been loaded
       Promise.all(IMAGES.map(image => loadImage(image)))
         .then(() => setImgsLoaded(true))
         .catch(err => console.log("Failed to load images", err))
