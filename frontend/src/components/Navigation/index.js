@@ -17,8 +17,6 @@ import SubtitlesIcon from '@mui/icons-material/Subtitles';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-
 
 export default function Navigation({ isLoaded, history }) {
     const theme = createTheme({
@@ -107,11 +105,11 @@ export default function Navigation({ isLoaded, history }) {
                                         display: { xs: 'block', md: 'none' },
                                     }}
                                 >
-                                    {pages.map((page) => (
+                                    {/* {pages.map((page) => (
                                         <MenuItem key={page} onClick={handleCloseNavMenu}>
                                             <Typography textAlign="center">{page}</Typography>
                                         </MenuItem>
-                                    ))}
+                                    ))} */}
                                     <NavLink to='#about' style={{ textDecoration: 'none', color: 'black' }}>
 
                                         <MenuItem onClick={handleCloseNavMenu}>
@@ -141,11 +139,20 @@ export default function Navigation({ isLoaded, history }) {
                             >
                             </Typography>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                                <NavLink to='#about'>
                                 <Button
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                    sx={{ my: 2, color: 'black', display: 'block' }}
                                 >
                                     About
                                 </Button>
+                                </NavLink>
+                                <NavLink to='/browse'>
+                                <Button
+                                    sx={{ my: 2, color: 'black', display: 'block' }}
+                                >
+                                    Browse
+                                </Button>
+                                </NavLink>
                             </Box>
 
                             {/*  right side profile*/}
