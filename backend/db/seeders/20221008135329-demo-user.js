@@ -8,6 +8,7 @@ module.exports = {
         email: 'd@d.com',
         username: 'Demo',
         hashedPassword: bcrypt.hashSync('password'),
+        githubProfile: 'githublink'
       }
     ], {});
   },

@@ -30,9 +30,9 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       }
     },
-    score: DataTypes.INTEGER,
-    currentLevel: DataTypes.INTEGER,
-    hints: DataTypes.INTEGER
+    githubProfile: {
+      type: DataTypes.STRING
+    }
   }, 
   {
     defaultScope: {
@@ -51,12 +51,13 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    User.hasMany(models.Level, { foreignKey: 'userId', onDelete: 'CASCADE' });
+    User.hasMany(models.Project, { foreignKey: 'userId' });
+    User.hasMany(models.Acquisition, { foreignKey: 'userId' });
   };
 
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
-    const { id, username, email, score, currentLevel, hints } = this; // context will be the User instance
-    return { id, username, email, score, currentLevel, hints };
+    const { id, username, email, githubProfile } = this; // context will be the User instance
+    return { id, username, email, githubProfile };
   };
 
   User.prototype.validatePassword = function (password) {
@@ -82,12 +83,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ username, email, password, githubProfile }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
       hashedPassword,
+      githubProfile
     });
     return await User.scope('currentUser').findByPk(user.id);
   };

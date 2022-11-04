@@ -1,33 +1,21 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Levels', {
+    return queryInterface.createTable('Projects', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      sequence: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       title: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING(40)
       },
-      hintOne: {
+      description: {
+        type: Sequelize.STRING(2000)
+      },
+      genre: {
         type: Sequelize.STRING
-      },
-      hintTwo: {
-        type: Sequelize.STRING
-      },
-      hintThree: {
-        type: Sequelize.STRING
-      },
-      levelId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
       },
       userId: {
         type: Sequelize.INTEGER
@@ -45,6 +33,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Levels');
+    return queryInterface.dropTable('Projects');
   }
 };

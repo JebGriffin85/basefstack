@@ -1,6 +1,7 @@
 
 
 git push heroku HEAD:master
+sudo service postgresql start
 
 idkwhat2code.com
 app that allows users to create ideas of apps/websites they would like to see made.  A dev can pick up that project and link a repo to it so people can track progress.  (can use github api to see last update on it) - will display how many devs have picked up project, can display github links based on most recently updated repo. 
