@@ -68,7 +68,7 @@ export default function Navigation({ isLoaded, history }) {
         <Box>
             <ThemeProvider theme={theme}>
                 <AppBar position="fixed" sx={{ boxShadow: 'none' }}>
-                    <Container maxWidth="xl">
+                    <Container maxWidth="xl" class='outerNav' style={{paddingLeft:'2em', paddingRight:'2em'}}>
                         <Toolbar disableGutters>
                             <NavLink to='/' style={{ textDecoration: 'none', color: 'black' }}>
                                 <SubtitlesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -105,11 +105,7 @@ export default function Navigation({ isLoaded, history }) {
                                         display: { xs: 'block', md: 'none' },
                                     }}
                                 >
-                                    {/* {pages.map((page) => (
-                                        <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                            <Typography textAlign="center">{page}</Typography>
-                                        </MenuItem>
-                                    ))} */}
+
                                     <NavLink to='#about' style={{ textDecoration: 'none', color: 'black' }}>
 
                                         <MenuItem onClick={handleCloseNavMenu}>
@@ -118,6 +114,7 @@ export default function Navigation({ isLoaded, history }) {
                                     </NavLink>
                                 </Menu>
                             </Box>
+                            {/* full screen nav bar */}
                             <NavLink to='/' style={{ textDecoration: 'none', color: 'black' }}>
                                 <SubtitlesIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                             </NavLink>
@@ -127,7 +124,7 @@ export default function Navigation({ isLoaded, history }) {
                                 component="div"
 
                                 sx={{
-                                    mr: 2,
+                                    mr: 0,
                                     display: { xs: 'flex', md: 'none' },
                                     flexGrow: 1,
                                     fontFamily: 'monospace',
@@ -197,125 +194,3 @@ export default function Navigation({ isLoaded, history }) {
         </Box>
     );
 };
-
-// export default function Navigation({ isLoaded, history}) {
-
-//     React.useEffect(() => {
-//         document.body.style.background = 'rgba(239, 239, 239, 0.8)';
-//     })
-//     const logout = (e) => {
-//         e.preventDefault();
-//         dispatch(sessionActions.logout());
-//         setAnchorEl(null);
-//     };
-
-//     const theme = createTheme({
-//         palette: {
-//             primary: {
-//                 main: 'rgba(239, 239, 239, 0.8)'
-//             },
-//             secondary: {
-//                 main:'rgba(239, 239, 239, 0.8)' 
-//             }
-//         }
-//     });
-
-//     const dispatch = useDispatch();
-//     const [anchorEl, setAnchorEl] = React.useState(null);
-//     const sessionUser = useSelector(state => state.session.user);
-
-//     let user;
-//        if (sessionUser) {
-//         user = sessionUser.username
-//     }
-
-//     const handleMenu = (event) => {
-//         setAnchorEl(event.currentTarget);
-//     };
-
-//     const handleClose = () => {
-//         setAnchorEl(null);
-//     };
-
-//     return (isLoaded &&
-//         <Box >
-//            {/* {console.log(history.location)} */}
-//                 <ThemeProvider theme={theme}>
-//                 <AppBar position="fixed" sx={{textAlign:'center', display: 'flex', boxShadow: 'none',backgroundColor:'rgba(239, 239, 239, 0.8)' }} >
-//                 <Toolbar>
-                    
-//                             <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}>
-//                             <SubtitlesIcon style={{marginTop: '6px'}}/>
-//                             </NavLink>
-                    
-//                         <Toolbar>
-//                             <NavLink to='#about' style={{textDecoration: 'none', color: 'black'}}>
-//                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
-//                                 About
-//                             </Typography>
-//                             </NavLink>
-//                             <NavLink to='/browse' style={{textDecoration: 'none', color: 'black'}}>
-//                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
-//                                 Browse
-//                             </Typography>
-//                             </NavLink>
-//                             <NavLink to='create' style={{textDecoration: 'none', color: 'black'}}>
-//                             <Typography variant="h6" component="div" sx={{  paddingRight: 2 }}>
-//                                 Create Project
-//                             </Typography>
-//                             </NavLink>
-//                             </Toolbar>
-//                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-//                         </Typography>
-                       
-//                         {isLoaded && sessionUser && (
-                        
-//                             <div>
-//                                 <IconButton
-//                                     size="large"
-//                                     aria-label="account of current user"
-//                                     aria-controls="menu-appbar"
-//                                     aria-haspopup="true"
-//                                     onClick={handleMenu}
-//                                     color="inherit"
-//                                 >
-//                                     <AccountCircle />
-//                                     <Typography variant="h6" component="div" sx={{  paddingLeft: 2, paddingTop: .5 }}>{user}</Typography>
-//                                 </IconButton>
-//                                 <Menu
-//                                     id="profile"
-//                                     anchorEl={anchorEl}
-//                                     anchorOrigin={{
-//                                         vertical: 'top',
-//                                         horizontal: 'right',
-//                                     }}
-//                                     keepMounted
-//                                     transformOrigin={{
-//                                         vertical: 'top',
-//                                         horizontal: 'right',
-//                                     }}
-//                                     open={Boolean(anchorEl)}
-//                                     onClose={handleClose}
-//                                 >
-//                                     <MenuItem onClick={logout}>Logout</MenuItem>
-//                                     <MenuItem onClick={handleClose}>My account</MenuItem>
-//                                 </Menu>
-//                             </div>
-                        
-//                     )}
-//                         {isLoaded && !sessionUser &&(
-
-//                             <div>
-//                                 <Link href="/login" underline="hover" variant="h6" color="black">
-//                                     {'Sign in'}
-//                                 </Link>
-                               
-//                             </div>
-
-//                         )}
-//                 </Toolbar>
-//             </AppBar>
-//                 </ThemeProvider>
-//         </Box>
-//     );
-// }
