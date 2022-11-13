@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Acquisition, { foreignKey: 'userId' });
   };
 
-  User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
+  User.prototype.toSafeObject = function () { 
     const { id, username, email, githubProfile } = this; // context will be the User instance
     return { id, username, email, githubProfile };
   };

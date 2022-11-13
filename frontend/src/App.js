@@ -6,7 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
-
+import BasicCard from './components/Tester'
 
 function App() {
   const history = useHistory();
@@ -24,6 +24,9 @@ function App() {
         <Switch>
           <Route path="/" exact={true}>
             <LandingPage />
+          </Route>
+          <Route path="/test" exact={true}>
+            <BasicCard />
           </Route>
           <Route path="/login" exact={true}>
             <LoginFormPage />

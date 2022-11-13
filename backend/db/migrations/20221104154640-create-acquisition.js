@@ -10,11 +10,13 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false, 
+        references: { model: 'Users' }
       },
       projectId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: { model: 'Projects' }
       },
       repoLink: {
         type: Sequelize.TEXT
