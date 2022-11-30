@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
@@ -17,8 +17,18 @@ import SubtitlesIcon from '@mui/icons-material/Subtitles';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import './navigation.css';
+import { makeStyles, IconButton } from '@material-ui/core';
+
+const useStyles = makeStyles({
+    root: {
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
+    }
+})
 
 export default function Navigation({ isLoaded, history }) {
+    const classes = useStyles();
     const theme = createTheme({
         palette: {
             primary: {
@@ -65,9 +75,9 @@ export default function Navigation({ isLoaded, history }) {
     };
 
     return (
-        <Box>
+        <Box class='main'>
             <ThemeProvider theme={theme}>
-                <AppBar position="fixed" sx={{ boxShadow: 'none' }}>
+                <AppBar position="sticky" sx={{ boxShadow: 'none' }}>
                     <Container maxWidth="xl" class='outerNav' style={{paddingLeft:'2em', paddingRight:'2em'}}>
                         <Toolbar disableGutters>
                             <NavLink to='/' style={{ textDecoration: 'none', color: 'black' }}>
@@ -158,7 +168,7 @@ export default function Navigation({ isLoaded, history }) {
                             {/*  right side profile*/}
                             {isLoaded && sessionUser && (
                                 <Box sx={{ flexGrow: 0, display: 'flex' }}>
-                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <IconButton className={classes.root} onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                         <AccountCircle sx={{ marginRight: '.3em' }} />
                                         <Typography textAlign="center" >{sessionUser.username}</Typography>
                                     </IconButton>

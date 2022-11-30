@@ -9,7 +9,8 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import pic from './pic.png'
 import './landingPage.css'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getProjects } from '../../store/actions/projects';
 
 const footers = [
     {
@@ -22,6 +23,7 @@ const footers = [
 const IMAGES = [pic];
 
 function MainHero() {
+    const dispatch = useDispatch();
     const [loaded, setLoaded] = React.useState(true);
     const [imgsLoaded, setImgsLoaded] = React.useState(false)
 
@@ -48,7 +50,9 @@ function MainHero() {
   
     })
 
- 
+ const call = () => {
+    dispatch(getProjects())
+ }
 
 
     return (loaded && imgsLoaded &&
@@ -96,8 +100,8 @@ function MainHero() {
                 </Button>
                 </div>
             </Container>
-            {/* End hero unit */}
-
+            {/* End hero unit */} 
+          
             {/* Footer */}
             <Container id='footer'
                 maxWidth="md"
@@ -126,6 +130,7 @@ function MainHero() {
                         </Grid>
                     ))}
                 </Grid>
+                
                 {/* <Copyright sx={{ mt: 5 }} /> */}
             </Container>
             {/* End footer */}

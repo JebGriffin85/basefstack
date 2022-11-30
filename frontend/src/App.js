@@ -6,7 +6,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
-import BasicCard from './components/Tester'
+import Browse from "./components/Browse";
+import { Toolbar } from '@material-ui/core'
 
 function App() {
   const history = useHistory();
@@ -25,14 +26,14 @@ function App() {
           <Route path="/" exact={true}>
             <LandingPage />
           </Route>
-          <Route path="/test" exact={true}>
-            <BasicCard />
-          </Route>
           <Route path="/login" exact={true}>
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/browse" exact={true}>
+            <Browse />
           </Route>
         </Switch>
       )}
