@@ -16,7 +16,7 @@ import * as sessionActions from '../../store/session';
 import SubtitlesIcon from '@mui/icons-material/Subtitles';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-
+import './navigation.css';
 
 export default function Navigation({ isLoaded, history }) {
     const theme = createTheme({
@@ -114,6 +114,8 @@ export default function Navigation({ isLoaded, history }) {
                                     </NavLink>
                                 </Menu>
                             </Box>
+
+
                             {/* full screen nav bar */}
                             <NavLink to='/' style={{ textDecoration: 'none', color: 'black' }}>
                                 <SubtitlesIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -136,14 +138,15 @@ export default function Navigation({ isLoaded, history }) {
                             >
                             </Typography>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                                <NavLink to='#about'>
-                                <Button
+                    
+
+                                <Button className='navLink' component={NavLink} to='#about'
                                     sx={{ my: 2, color: 'black', display: 'block' }}
                                 >
                                     About
                                 </Button>
-                                </NavLink>
-                                <NavLink to='/browse'>
+
+                                <NavLink className='navLink' to='/browse' style={{ textDecoration: 'none' }}>
                                 <Button
                                     sx={{ my: 2, color: 'black', display: 'block' }}
                                 >
