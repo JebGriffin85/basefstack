@@ -2,6 +2,7 @@ import React, {useEffect } from 'react';
 import { Grid, CircularProgress } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjects } from '../../store/actions/projects';
+import ProjectForm from '../CreateProject';
 
 
 
@@ -19,6 +20,7 @@ const Browse = () => {
 
         !projects.length ? <CircularProgress /> : (
             <>
+            <ProjectForm />
             <div>
                   {projects.map((project) => (
                     <div key={project.id} item xs={12} sm={6}>

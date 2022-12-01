@@ -9,4 +9,12 @@ router.get('/', asyncHandler( async (req, res) => {
     return res.json(allProjects)
 }));
 
+router.post('/', asyncHandler(async (req, res, next) => {
+    const { title, description, genre, userId } = req.body;
+    const newProject = await Project.create({
+        title, description, genre, userId
+    });
+    return res.json(newProject)
+}))
+
 module.exports = router;
